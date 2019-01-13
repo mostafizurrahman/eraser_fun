@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Erase View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="EraseViewController" customModule="eraser_fun" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJU-qc-pex" customClass="EraserView" customModule="eraser_fun" customModuleProvider="target">
+                                <rect key="frame" x="27.5" y="183.5" width="320" height="320"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" tag="10101" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="udi-UF-Vub">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" tag="10111" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="14j-Zu-WH0">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="14j-Zu-WH0" firstAttribute="centerX" secondItem="TJU-qc-pex" secondAttribute="centerX" id="0J7-uT-pee"/>
+                                    <constraint firstAttribute="height" constant="320" id="6iq-29-J2N"/>
+                                    <constraint firstItem="14j-Zu-WH0" firstAttribute="height" secondItem="TJU-qc-pex" secondAttribute="height" id="Ahd-hx-nyA"/>
+                                    <constraint firstItem="udi-UF-Vub" firstAttribute="width" secondItem="TJU-qc-pex" secondAttribute="width" id="HrK-pq-X8e"/>
+                                    <constraint firstItem="udi-UF-Vub" firstAttribute="centerY" secondItem="TJU-qc-pex" secondAttribute="centerY" id="MEn-Vq-j4G"/>
+                                    <constraint firstItem="udi-UF-Vub" firstAttribute="height" secondItem="TJU-qc-pex" secondAttribute="height" id="RWc-Wd-BsM"/>
+                                    <constraint firstAttribute="width" constant="320" id="U1g-7u-Rup"/>
+                                    <constraint firstItem="14j-Zu-WH0" firstAttribute="centerY" secondItem="TJU-qc-pex" secondAttribute="centerY" id="UOO-HP-Xax"/>
+                                    <constraint firstItem="14j-Zu-WH0" firstAttribute="width" secondItem="TJU-qc-pex" secondAttribute="width" id="lIF-UN-hXh"/>
+                                    <constraint firstItem="udi-UF-Vub" firstAttribute="centerX" secondItem="TJU-qc-pex" secondAttribute="centerX" id="wDe-rq-SZv"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="TJU-qc-pex" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NES-Uq-9dd"/>
+                            <constraint firstItem="TJU-qc-pex" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Ylf-bi-ZvH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="eraserView" destination="TJU-qc-pex" id="LFW-xM-CET"/>
+                        <outlet property="heightLayout" destination="6iq-29-J2N" id="cOQ-u0-KTL"/>
+                        <outlet property="widthLayout" destination="U1g-7u-Rup" id="Ady-73-llL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
