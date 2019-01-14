@@ -8,9 +8,21 @@
 
 import UIKit
 
+protocol EraserDelegate:NSObjectProtocol {
+    func didCompleted(Percentage percent:Float)
+    func didEndErasing()
+}
+
 class EraserView: UIView {
     
-    
+    var half_dimension:CGFloat = 0.0
+    var dimension:Int = 0 {
+        didSet{
+            self.dimension *= Int(self.scale_x)
+            self.half_dimension = CGFloat(self.dimension / 2)
+        }
+    }
+    weak var eraserDelegate:EraserDelegate?
     var sourceImage:UIImage?
     var blackImage:UIImage?
     var useBlackWhite = true
@@ -18,6 +30,7 @@ class EraserView: UIView {
     var imageWidth:Int = 0
     var imageHeight:Int = 0
     var totalPixel:Int = 0
+    var clearPixel:Int = 0
     var drawRect:CGRect = .zero
     var blackWhiteContext:CGContext!
     var blackWhiteData: UnsafeMutablePointer<UInt32>!
@@ -55,8 +68,7 @@ class EraserView: UIView {
         self.imageHeight = bwCGImage.height
         self.drawRect.size.width = CGFloat(self.imageWidth)
         self.drawRect.size.height = CGFloat(self.imageHeight)
-        self.scale_x = self.drawRect.size.width / self.bounds.width
-        self.scale_y = self.drawRect.size.height / self.bounds.height
+        
         self.totalPixel = self.imageHeight * self.imageWidth
         let bitsPerComponent = 8
         let bytesPerRow = 4 * self.imageWidth
@@ -92,6 +104,9 @@ class EraserView: UIView {
             if let image_view = self.viewWithTag(10101) as? UIImageView {
                 if image_view.image == nil {
                     image_view.image = self.sourceImage
+                    self.scale_x = self.drawRect.size.width / self.bounds.width
+                    self.scale_y = self.drawRect.size.height / self.bounds.height
+                    self.dimension = 20
                 }
             }
         }
@@ -126,30 +141,37 @@ class EraserView: UIView {
             DispatchQueue.global().async {
                 
                 let position = touch.location(in: self)
-                var origin_x = Int(position.x * self.scale_x - 20.0)
-                var origin_y = Int(position.y * self.scale_y - 20.0)
-                var dimension:Int = Int(40 * self.scale_x)
-                
+                var origin_x = Int(position.x * self.scale_x - self.half_dimension)
+                var origin_y = Int(position.y * self.scale_y - self.half_dimension)
                 if origin_x < 0 {
-                    dimension = 20
                     origin_x = 0
+                } else if origin_x + self.dimension > self.imageWidth {
+                    origin_x -= self.dimension
                 }
-                
                 if origin_y < 0 {
-                    dimension = 20
                     origin_y = 0
+                } else if origin_y + self.dimension > self.imageHeight {
+                    origin_y -= self.dimension
                 }
-                for x in origin_x...origin_x+dimension-1 {
-                    for y in origin_y...origin_y+dimension-1 {
+                for x in origin_x...origin_x+self.dimension-1 {
+                    for y in origin_y...origin_y+self.dimension-1 {
                         
                         
                         let index = (self.imageWidth * y) + x
-                        
+                        if index < self.totalPixel {
                             let pointer = self.blackWhiteData.advanced(by: index )
-                            pointer.pointee = 0
+                            if pointer.pointee != 0 {
+                                pointer.pointee = 0
+                                self.clearPixel += 1
+                            }
+                        }
                     }
                 }
+                let completed = Float(self.clearPixel) / Float(self.totalPixel) 
+               
+                
                 DispatchQueue.main.async {
+                    self.eraserDelegate?.didCompleted(Percentage: completed)
                     self.setNeedsDisplay()
                 }
             }

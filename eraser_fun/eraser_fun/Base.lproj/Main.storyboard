@@ -42,22 +42,53 @@
                                     <constraint firstItem="udi-UF-Vub" firstAttribute="centerX" secondItem="TJU-qc-pex" secondAttribute="centerX" id="wDe-rq-SZv"/>
                                 </constraints>
                             </view>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fNt-nv-f9e">
+                                <rect key="frame" x="27.5" y="147" width="320" height="2"/>
+                                <color key="progressTintColor" red="0.23137254900000001" green="0.79607843140000001" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="trackTintColor" red="0.4398382482" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0% " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVV-KX-Rt3">
+                                <rect key="frame" x="173" y="157" width="29" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="10" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="Xxh-gP-fgu">
+                                <rect key="frame" x="25.5" y="536" width="324" height="31"/>
+                                <color key="minimumTrackTintColor" red="0.23137254900000001" green="0.79607843140000001" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="maximumTrackTintColor" red="0.4398382482" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="changeDimension:" destination="BYZ-38-t0r" eventType="valueChanged" id="D86-zt-Bos"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="TJU-qc-pex" firstAttribute="top" secondItem="fNt-nv-f9e" secondAttribute="bottom" constant="34.5" id="0a2-pD-Ze6"/>
+                            <constraint firstItem="fNt-nv-f9e" firstAttribute="width" secondItem="TJU-qc-pex" secondAttribute="width" id="117-JV-DT5"/>
+                            <constraint firstItem="Xxh-gP-fgu" firstAttribute="top" secondItem="TJU-qc-pex" secondAttribute="bottom" constant="32.5" id="H5P-ta-OlF"/>
                             <constraint firstItem="TJU-qc-pex" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NES-Uq-9dd"/>
                             <constraint firstItem="TJU-qc-pex" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Ylf-bi-ZvH"/>
+                            <constraint firstItem="Xxh-gP-fgu" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="a5A-ER-gFG"/>
+                            <constraint firstItem="Xxh-gP-fgu" firstAttribute="width" secondItem="TJU-qc-pex" secondAttribute="width" id="bhr-sC-JGA"/>
+                            <constraint firstItem="EVV-KX-Rt3" firstAttribute="top" secondItem="fNt-nv-f9e" secondAttribute="bottom" constant="8" id="lIG-oh-NjO"/>
+                            <constraint firstItem="fNt-nv-f9e" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="vxi-1p-ciC"/>
+                            <constraint firstItem="EVV-KX-Rt3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="wYr-a7-by9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="dimensionSlider" destination="Xxh-gP-fgu" id="uqC-m6-AWo"/>
                         <outlet property="eraserView" destination="TJU-qc-pex" id="LFW-xM-CET"/>
                         <outlet property="heightLayout" destination="6iq-29-J2N" id="cOQ-u0-KTL"/>
+                        <outlet property="progressLabel" destination="EVV-KX-Rt3" id="Zq1-Cd-zce"/>
+                        <outlet property="progressView" destination="fNt-nv-f9e" id="kYU-Xv-Zks"/>
                         <outlet property="widthLayout" destination="U1g-7u-Rup" id="Ady-73-llL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="132" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>

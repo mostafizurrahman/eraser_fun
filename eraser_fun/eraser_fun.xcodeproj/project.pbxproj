@@ -318,6 +318,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L3SWHN9S73;
+				GCC_OPTIMIZATION_LEVEL = fast;
 				INFOPLIST_FILE = eraser_fun/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
